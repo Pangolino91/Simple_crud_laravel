@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\immagineuploadata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class ImmagineuploadataController extends Controller
@@ -47,10 +48,14 @@ class ImmagineuploadataController extends Controller
         ]);
 
         // storing file
+        
+        // STREAM METHOD (NEED TO CHANGE PHP.INI)
+        // $path2 = Storage::put('teststream', $path);
+        // $path = $request->file('nomeimmagine');
+
         $path = $request->file('nomeimmagine')->storeAs(
             'public/immagini', $request->file('nomeimmagine')->getClientOriginalName().'.'.time()
         );
-
 
         $immagine = new immagineuploadata;
 

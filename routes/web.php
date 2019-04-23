@@ -15,5 +15,8 @@ Route::get('/', function () {
     return redirect('/immagineuploadata');
 });
 
+Route::get('/test', function () {
+    return dd(phpinfo());
+});
 
 Route::resource('immagineuploadata', 'immagineuploadataController');
