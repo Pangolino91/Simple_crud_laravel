@@ -13,4 +13,4 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## About the app
 
-Simply clone the 
+Simply clone the app, rename .env-sample into .env, create a new table in your database, update the data to link the database and start adding Elements to the main Page :)
