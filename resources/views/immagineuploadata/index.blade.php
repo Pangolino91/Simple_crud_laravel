@@ -24,17 +24,21 @@
     </div>
     @endif
 
-
+<div class="container">
+    <div class="row">
 @foreach ($immagine as $item)
-<h2>Immagine {{$item->id}}</h2>
-    <p>{{$item->nomeimmagine}}</p>
-    <p>{{$item->descrizione}}</p>
-    <img width="300" src="{{asset('storage/immagini/'.$item->nomeimmagine)}}" alt=""><br>
-    <a href="{{URL::to('/immagineuploadata'.'/'.$item->id)}}">Clicca Per modificare</a>
+<div class="col-lg-4 col-sm-6">
+    <h2>Immagine {{$item->id}}</h2>
+        <p>{{$item->nomeimmagine}}</p>
+        <p>{{$item->descrizione}}</p>
+        <img class="card-img" src="{{asset('storage/immagini/'.$item->nomeimmagine)}}" alt=""><br>
+        <a href="{{URL::to('/immagineuploadata'.'/'.$item->id)}}">Clicca Per modificare</a>
+    </div>
 @endforeach
  
 {{ $immagine->links() }}
-
+    </div>
+</div>
 @endsection
 
 {{-- <p>{{$test}}</p> --}}
