@@ -19,4 +19,9 @@ Route::get('/test', function () {
     return dd(phpinfo());
 });
 
-Route::resource('immagineuploadata', 'immagineuploadataController');
+Route::resource('immagineuploadata', 'immagineuploadataController')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

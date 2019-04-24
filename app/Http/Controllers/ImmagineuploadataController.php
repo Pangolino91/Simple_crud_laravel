@@ -6,6 +6,9 @@ use App\immagineuploadata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 
 class ImmagineuploadataController extends Controller
 {
@@ -17,7 +20,8 @@ class ImmagineuploadataController extends Controller
     public function index()
     {
         $immagine = DB::table('immagineuploadatas')->paginate(15);;
-
+        // $ciao = auth()->user();
+        // $ciao = Auth::user()->name;
         return view ('immagineuploadata.index', array(
             'immagine' => $immagine
         ));
@@ -133,6 +137,11 @@ class ImmagineuploadataController extends Controller
     {
         immagineuploadata::findOrFail($id)->delete();
 
+        return redirect('/immagineuploadata')->with('status-delete', 'Elemento Eliminato');
+    }
+
+    public function testafterregistr () 
+    {
         return redirect('/immagineuploadata')->with('status-delete', 'Elemento Eliminato');
     }
 }
