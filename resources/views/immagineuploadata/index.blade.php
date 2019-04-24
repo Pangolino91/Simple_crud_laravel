@@ -41,4 +41,4 @@
 </div>
 @endsection
 
-{{-- <p>{{$test}}</p> --}}
+{{-- <p>{{var_dump($test)}}</p> --}}

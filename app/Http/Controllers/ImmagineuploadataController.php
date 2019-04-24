@@ -6,8 +6,11 @@ use App\immagineuploadata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+
+//  For Testing Dependencies
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 
 class ImmagineuploadataController extends Controller
@@ -23,7 +26,7 @@ class ImmagineuploadataController extends Controller
         // $ciao = auth()->user();
         // $ciao = Auth::user()->name;
         return view ('immagineuploadata.index', array(
-            'immagine' => $immagine
+            'immagine' => $immagine,
         ));
     }
 
@@ -79,10 +82,11 @@ class ImmagineuploadataController extends Controller
      */
     public function show($id)
     {
-
+        // $ciao = Input::all();
         $singolo = immagineuploadata::findOrFail($id);
         return view ('immagineuploadata.show', array(
-            'immagine' => $singolo
+            'immagine' => $singolo,
+            // 'test' => $ciao
         ));
     }
 

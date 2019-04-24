@@ -4,7 +4,8 @@
     <form enctype="multipart/form-data" action="{{ URL::to("/immagineuploadata".'/'.$immagine->id)}}" method="post">
     @csrf
     {{method_field('PATCH')}}
-    <p>{{ URL::to("/immagineuploadata".'/'.$immagine->id)}}</p>
+    {{-- <p>{{ URL::to("/immagineuploadata".'/'.$immagine->id)}}</p> --}}
+    <h3>{{'Titolo Immagine: ' . $immagine->nomeimmagine}}</h3>
     <label for="descrizione"></label>
     <input type="text" name="descrizione" value="{{$immagine->descrizione}}"><br>
     <label for=""></label>
