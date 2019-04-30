@@ -7,7 +7,7 @@
     {{-- <p>{{ URL::to("/immagineuploadata".'/'.$immagine->id)}}</p> --}}
     <h3>{{'Titolo Immagine: ' . $immagine->nomeimmagine}}</h3>
     <label for="descrizione"></label>
-    <input type="text" name="descrizione" value="{{$immagine->descrizione}}"><br>
+    <textarea type="text" name="descrizione" value="{{$immagine->descrizione}}"></textarea><br>
     <label for=""></label>
     <input type="file" name="nomeimmagine" value="{{$immagine->nomeimmagine}}"><br>
     <input type="submit" name="submit" value="update">

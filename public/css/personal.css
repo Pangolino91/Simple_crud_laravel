@@ -1,3 +1,10 @@
-.card-img {
-    width: auto !important;
+
+
+.text-area {
+    /* background-color: aqua; */
+    color: aqua;
+}
+
+.label-form {
+    color: purple;
 }

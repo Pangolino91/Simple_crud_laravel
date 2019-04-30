@@ -4,8 +4,8 @@
     <form enctype="multipart/form-data" method="POST" action="{{ URL::to('/immagineuploadata')}}">
         @csrf
         <div class="form-group">
-          <label for="descrizione">Descrizione Immagine</label>
-          <input type="text" class="form-control" name="descrizione" id="" aria-describedby="helpId" placeholder="">
+          <label class="label-form" for="descrizione">Descrizione Immagine</label>
+          <textarea type="text" class="form-control text-area" name="descrizione" id="" aria-describedby="helpId" placeholder=""></textarea>
           <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\immagineuploadata;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -22,12 +23,14 @@ class ImmagineuploadataController extends Controller
      */
     public function index()
     {
-        $immagine = DB::table('immagineuploadatas')->paginate(15);;
-        // $ciao = auth()->user();
-        // $ciao = Auth::user()->name;
+        // retrieving and paginating the results - must be done on a query builder
+        // not on the collection itself. instead of (query)->get()->paginate(x) MUST do (query)->paginate(x)
+        $immagine = immagineuploadata::with('user')->paginate(6);
         return view ('immagineuploadata.index', array(
-            'immagine' => $immagine,
+            'immagine' => $immagine
         ));
+
+  
     }
 
     /**
@@ -56,6 +59,14 @@ class ImmagineuploadataController extends Controller
 
         // storing file
         
+        // storing the creator of the image (user) into the table
+
+        // TESTING RELATIONSHIPS
+        // auth()->user()->immagineuploadata
+        // $test = immagineuploadata::find(1);
+        // $test = User::find(2);
+        // dd($test);   
+
         // STREAM METHOD (NEED TO CHANGE PHP.INI)
         // $path2 = Storage::put('teststream', $path);
         // $path = $request->file('nomeimmagine');
@@ -64,11 +75,15 @@ class ImmagineuploadataController extends Controller
             'public/immagini', $request->file('nomeimmagine')->getClientOriginalName().'.'.time()
         );
 
-        $immagine = new immagineuploadata;
+        // crator User name
+        $userName = auth()->user()->id;
 
+        // saving the imagedata in the DB
+        $immagine = new immagineuploadata;
+        $immagine->user_id = $userName;
         $immagine->descrizione = $request->descrizione;
         $immagine->nomeimmagine = $request->file('nomeimmagine')->getClientOriginalName().'.'.time();
-
+        
         $immagine->save();
 
         return redirect('/immagineuploadata')->with('status', 'Immagine Aggiunta!');
@@ -147,5 +162,12 @@ class ImmagineuploadataController extends Controller
     public function testafterregistr () 
     {
         return redirect('/immagineuploadata')->with('status-delete', 'Elemento Eliminato');
+    }
+
+    public function test() {
+        
+        $user = user::all()->find(1)->immagineuploadata->pluck('descrizione');
+        // dd($user);  
+        return view('test', compact('user'));
     }
 }

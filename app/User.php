@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function immagineuploadata()
+    {
+        // must styding the second and third parameter
+        return $this->hasMany('App\immagineuploadata', 'user_id', 'id');
+    }
 }
