@@ -9,5 +9,6 @@
             <li>{{$user}}</li> 
         @endforeach
     </ul>    
+    <img src="{{asset('storage/immagini/Desert.jpg.1556618328')}}" alt="">
 {{-- <p>{{$user}}</p> --}}
 @endsection

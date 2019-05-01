@@ -25,5 +25,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+// testing stuff out
 Route::get('/test', 'immagineuploadataController@test');
+
+
+// Email related routes
+Route::get('/sendmail', 'MailController@send');
