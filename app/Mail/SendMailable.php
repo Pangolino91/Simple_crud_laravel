@@ -7,27 +7,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DemoEmail extends Mailable
+class SendMailable extends Mailable
 {
     use Queueable, SerializesModels;
-     
-    /**
-     * The demo object instance.
-     *
-     * @var Demo
-     */
-    public $demo;
- 
+    public $name;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($demo)
+    public function __construct($name)
     {
-        $this->demo = $demo;
+        $this->name = $name;
     }
- 
+
     /**
      * Build the message.
      *
@@ -35,8 +28,6 @@ class DemoEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('info@enricocerri.com')
-                    ->view('mails.demo')
-                    ->text('mails.demo_plain');
+        return $this->view('mails.name');
     }
 }

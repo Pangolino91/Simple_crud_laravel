@@ -10,18 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return redirect('/immagineuploadata');
-});
+})->middleware('verified');
 
-Route::get('/test', function () {
-    return dd(phpinfo());
-});
+// Route::resource('immagineuploadata', 'immagineuploadataController')->middleware('auth');
 
-Route::resource('immagineuploadata', 'immagineuploadataController')->middleware('auth');
-
-Auth::routes();
+Route::group(['middleware' => ['auth', 'verified']], function() {
+    Route::resource('immagineuploadata','immagineuploadataController'); 
+ });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
