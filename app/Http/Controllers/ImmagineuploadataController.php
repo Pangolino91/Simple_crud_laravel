@@ -77,7 +77,6 @@ class ImmagineuploadataController extends Controller
 
         // crator User name
         $userName = auth()->user()->id;
-
         // saving the imagedata in the DB
         $immagine = new immagineuploadata;
         $immagine->user_id = $userName;
